@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+#header {
+  padding: 15px;
+  background-color: rgb(35, 146, 35);
+}
+#header h1 {
+  margin-left: 2%;
+  font-size: 250%;
+  font-family: cursive;
+  font-weight: bold;
+  color: white;
+}
+#header h2 {
+  margin-left: 2%;
+  color: black;
+}
+#content {
+  width: 80%;
+  margin-top: 30px;
+  margin-left: 10%;
+}
+#content p:first-child span {
+  font-weight: bold;
+}
+form {
+  width: 70%;
+  margin: auto;
+  padding: 20px 20px 20px 5%;
+  background-color: lightgray;
+}
+.wrap {
+  margin-top: 12px;
+}
+input[id=fname] {
+  margin-left: 34px;
+}
+input[id=lname] {
+  margin-left: 36px;
+}
+input[id=mail] {
+  margin-left: 60px;
+}
+input[id=phone] {
+  margin-left: 33px;
+}
+#level {
+  height: 20px;
+  width: 70px;
+  margin-top: 3px;
+}
+input[type=submit] {
+  height: 35px;
+  width: 15%;
+  border: none;
+  color: white;
+  background-color: rgb(35, 146, 35);
+}
+input[type=submit]:hover {
+  background-color: rgb(13, 80, 13);
+}
+#footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  height: 300px;
+  margin-top: 30px;
+}
+#footer p {
+  color: white;
+  background-color: black;
+}
+@media screen and (max-width: 1180px) {
+  input[type=submit] {
+    width: 18%;
+  }
+}
+@media screen and (max-width: 980px) {
+  input[type=submit] {
+    width: 20%;
+  }
+}
+@media screen and (max-width: 850px) {
+  input[type=submit] {
+    width: 23%;
+  }
+}
+@media screen and (max-width: 750px) {
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3px;
+  }
+  input[id=fname], input[id=lname], input[id=mail], input[id=phone] {
+    margin-top: 5px;
+    margin-left: 0;
+    width: 50%;
+  }
+  input[id=mname] {
+    margin-top: 5px;
+    width: 50%;
+  }
+  #not-edit {
+    margin-top: 10px;
+  }
+  #level {
+    margin-top: 3px;
+  }
+  input[type=submit] {
+    width: 90%;
+    margin: auto;
+  }
+}

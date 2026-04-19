@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Grammar Quiz</title>
+      <link rel="stylesheet" type="text/css"  href="grammar_quiz1.css"/>
+      <link rel="" href=""/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+    </head>
+    <body>
+      <div id="header">
+        <h1>Hello <span id="firstname"></span>! &#128075;</h1>
+        <h2>Welcome! This will be fun.</h2>
+      </div>
+      <script>
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        document.getElementById('firstname').innerText = userData.firstName;
+      </script>
+      <div id="content-container">
+        <div id="preamble">
+          <h3>A Little Tip</h3>
+          <p>This test consists of 20 questions. Each question is a multiple choice question which has 4 options. Select one and move. When done with the questions in a page, 
+            click 'Next' to move to the next page with another set of questions. Once you're done, click 'Get Your Score' to submit, afterwhich your score will become visible.
+          </p>
+          <p><span>NOTE!</span> Once you move to the next page, you cannot navigate backwards to access the previous page. And until you answer all the questions in a set/page, 
+            you cannot move forward.</p>
+          <p><span>Heads Up!</span> Correct answers don't seem correct.</p>
+          <p><b><i>Good Luck!</i></b></p>
+        </div><hr><hr>
+        <div id="mother">
+          <div id="quiz-content">
+            <h2>English Grammar Apptitude Test</h2><br>
+            <form action="">
+              <ol type="1">
+                <li id="q1">
+                  <p>Neither the manager nor the employees ______ satisfied with the new policy.</p>
+                  <input type="radio" id="q1-a" name="q1" value="is" required>
+                  <label for="q1-a">is</label><br>
+                  <input type="radio" id="q1-b" name="q1" value="are" class="correct" required>
+                  <label for="q1-b">are</label><br>
+                  <input type="radio" id="q1-c" name="q1" value="was" required>
+                  <label for="q1-c">was</label><br>
+                  <input type="radio" id="q1-d" name="q1" value="has been" required>
+                  <label for="q1-d">has been</label>
+                </li>
+                <li id="q2">
+                  <p>Hardly had she entered the room ______ the phone rang.</p>
+                  <input type="radio" id="q2-a" name="q2" value="than" required>
+                  <label for="q2-a">than</label><br>
+                  <input type="radio" id="q2-b" name="q2" value="when" class="correct" required>
+                  <label for="q2-b">when</label><br>
+                  <input type="radio" id="q2-c" name="q2" value="then" required>
+                  <label for="q2-c">then</label><br>
+                  <input type="radio" id="q2-d" name="q2" value="that" required>
+                  <label for="q2-d">that</label>
+                </li>
+                <li id="q3">
+                  <p>If I ______ about the meeting earlier, I would have attended.</p>
+                  <input type="radio" id="q3-a" name="q3" value="knew" required>
+                  <label for="q3-a">knew</label><br>
+                  <input type="radio" id="q3-b" name="q3" value="had known" class="correct" required>
+                  <label for="q3-b">had known</label><br>
+                  <input type="radio" id="q3-c" name="q3" value="know" required>
+                  <label for="q3-c">know</label><br>
+                  <input type="radio" id="q3-d" name="q3" value="would know" required>
+                  <label for="q3-d">would know</label>
+                </li>
+                <li id="q4">
+                  <p>The book, along with several articles, ______ placed on the table.</p>
+                  <input type="radio" id="q4-a" name="q4" value="were" required>
+                  <label for="q4-a">were</label><br>
+                  <input type="radio" id="q4-b" name="q4" value="have been" required>
+                  <label for="q4-b">have been</label><br>
+                  <input type="radio" id="q4-c" name="q4" value="was" class="correct" required>
+                  <label for="q4-c">was</label><br>
+                  <input type="radio" id="q4-d" name="q4" value="are" required>
+                  <label for="q4-d">are</label>
+                </li>
+                <li id="q5">
+                  <p>No sooner had they arrived ______ it started raining.</p>
+                  <input type="radio" id="q5-a" name="q5" value="when" required>
+                  <label for="q5-a">when</label><br>
+                  <input type="radio" id="q5-b" name="q5" value="that" required>
+                  <label for="q5-b">that</label><br>
+                  <input type="radio" id="q5-c" name="q5" value="then" required>
+                  <label for="q5-c">then</label><br>
+                  <input type="radio" id="q5-d" name="q5" value="than" class="correct" required>
+                  <label for="q5-d">than</label>
+                </li>
+              </ol>
+            </form>
+            <button type="button" onclick="storeAnswers()">Next ></button>
+            <!--<button type="button" onclick="reveal()">reveal</button>
+            <p id="reveal"></p>-->
+            <script>
+              function storeAnswers() {
+                const correctAnswers1 = ['are', 'when', 'had known', 'was', 'than'];
+                const selectedAnswers1 = [];
+                const correctSelects1to5 = [];
+                const allQuestions = document.getElementsByTagName('li');
+                for (var i = 0; i < allQuestions.length; i++) {
+                  let eachQuestion = allQuestions[i];
+                  /*Another more complex but less efficient way is below:
+                  let eachQuestionAllOptions = eachQuestion.querySelectorAll('input');    -> access all the options in each question and store them in a variable,
+                  for (var j = 0; j < eachQuestionAllOptions.length; j++) {  
+                    let eachQuestionEachOption = eachQuestionAllOptions[i];               -> iterate through all the options, accessing them individually,
+                    if (eachQuestionEachOption.checked) {                                 -> If an option is checked (selected by user), it's value is added to the
+                      selectedAnswers.push(eachQuestionEachOption.value)                     'selectedAnswers' array and stored there,
+                    } else {
+                      selectedAnswers.push(null)                                          -> if not, 'null' is added and stored there.
+                    }*/
+                  let selectedOption = eachQuestion.querySelector('input:checked')  // This, however, goes straight to seek out the checked option in each question and stores it,
+                  let correctOption = eachQuestion.querySelector('input.correct')
+                  if (selectedOption)   {                                           // If found...
+                    selectedAnswers1.push(selectedOption.value)                     // it's value is added to the 'selectedAnswers' array and stored there,
+                  } else {
+                    selectedAnswers1.push(null)                                     // If not, 'null' is added and stored there.
+                  }
+                  /*Shorter version of the conditional statement above is seen below:
+                  selectedAnswers.push(selectedOptiion ? selectedOptiion.value : null)*/         // Conditions and execution all in one line.
+                  if (selectedOption && correctOption && selectedOption.value == correctOption.value) {
+                    correctSelects1to5.push(selectedOption.value)
+                    localStorage.setItem('correctSelects1to5', JSON.stringify(correctSelects1to5))
+                  }
+                }
+                if (selectedAnswers1[0] == null || selectedAnswers1[1] == null || selectedAnswers1[2] == null || selectedAnswers1[3] == null || selectedAnswers1[4] == null) {
+                  alert('Please answer all questions in this set!')
+                } else {
+                  localStorage.setItem('selectedAnswers1', JSON.stringify(selectedAnswers1))
+                  localStorage.setItem('correctAnswers1', JSON.stringify(correctAnswers1))
+                  window.location.href = '../Quiz_app_grammar2/grammar_quiz2.html';
+                }
+              }/*
+              function reveal() {
+                const rightSelects1to5 = [];
+                const allTheQuestions = document.getElementsByTagName('li');
+                for (var i = 0; i < allTheQuestions.length; i++) {
+                  let oneQuestion = allTheQuestions[i];
+                  let pickedOption = oneQuestion.querySelector('input:checked')
+                  let rightOption = oneQuestion.querySelector('input.correct')
+                  if (pickedOption && rightOption && pickedOption.value == rightOption.value) {
+                    rightSelects1to5.push(pickedOption.value)
+                  }
+                }
+                document.getElementById('reveal').innerHTML = rightSelects1to5;
+              }*/
+              window.history.pushState(null, '', '');      // }
+              window.history.pushState(null, '', '');      // } -> Creates a history of 5 fake pages so the browser thinks 5 new pages have been created after the current one;
+              window.history.pushState(null, '', '');      // } ...the browseer thinks the tab is 5 pages ahead. Without the fake browser history, browsers will only see pages
+              window.history.pushState(null, '', '');      // } opened from live servers as part of browser history, not from local computer files
+              window.history.pushState(null, '', '');      // }
+              window.addEventListener('popstate', function () {          /* Listens for when user tries to navigate to previous page... When this happens, browser thinks 
+                it's navigating a page backwards (according to the history created). But in reality, the fake pages are being removed*/
+                alert('You are not allowed to go back during the quiz!');      // Alerts user
+              });
+              /* Each time the user clicks on the arrow to navigate backwards, a fake page is removed repeatedly until the last fake page is removed -- at which point, the 
+                browser will think it has navigated back to the first page (according to it's history)--, at which point, clicking the same arrow will not trigger the popstate
+                event because it will navigate to a real page that's not in it's history (not a fake one.*/
+            </script>
+          </div>
+        </div>
+      </div>
+      <div id="extra"></div><hr>
+      <div id="footer">
+        <p>&copy;Laully</p>
+      </div>
+    </body>
+  </html>

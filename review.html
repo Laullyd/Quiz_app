@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Grammar Quiz Review</title>
+      <link rel="stylesheet" type="text/css"  href="review.css"/>
+      <link rel="" href=""/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+    </head>
+    <body>
+      <div id="header">
+        <h1>Owkay <span id="firstname"></span>! &#128079;</h1>
+        <h2>Let's take a look at the questions you got wrong. Shall we? <span>&#128515;</span></h2>
+      </div>
+      <script>
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        document.getElementById('firstname').innerText = userData.firstName;
+      </script>
+      <div id="mother">
+        <div id="preamble"><p>You got <span id="pre-s"></span>wrong.</p></div><hr>
+        <div id="content">
+          <!--<p id="test-reveal1"></p>
+          <p id="test-reveal2"></p>-->
+          <div id="inner-content">
+            <p id="q1"><b>1.</b> Neither the manager nor the employees ______ satisfied with the new policy.<br>You picked: <span id="q1_s"></span>.<br> Meanwhile, When using neither…nor, the verb agrees with the subject closest to it (employees → plural), so <b>“are”/</b> is correct.</p>
+            <p id="q2"><b>2.</b> Hardly had she entered the room ______ the phone rang.<br>You picked: <span id="q2_s"></span>.<br> Meanwhile, The structure is “Hardly…when”, a standard inversion expression for past events, → <b>when</b>.</p>
+            <p id="q3"><b>3.</b> If I ______ about the meeting earlier, I would have attended.<br>You picked: <span id="q3_s"></span>.<br> Meanwhile, This is a third conditional (past unreal). If + past perfect → would have + past participle → <b>had known</b>.</p>
+            <p id="q4"><b>4.</b> The book, along with several articles, ______ placed on the table.<br>You picked: <span id="q4_s"></span>.<br> Meanwhile, The main subject is book (singular). “along with…” does not affect agreement → <b>was</b>.</p>
+            <p id="q5"><b>5.</b> No sooner had they arrived ______ it started raining.<br>You picked: <span id="q5_s"></span>.<br> Meanwhile, The correct correlative structure is <b>“No sooner…than”.</b></p>
+            <p id="q6"><b>6.</b> Each of the players ______ responsible for their own equipment.<br>You picked: <span id="q6_s"></span>.<br> Meanwhile, Each is singular, so it takes a singular verb → <b>is.</b></p>
+            <p id="q7"><b>7.</b> She insisted that he ______ immediately.<br>You picked: <span id="q7_s"></span>.<br> Meanwhile, After verbs like insist, we use the subjunctive mood. Insisted that he <b>leave</b> (base verb).</p>
+            <p id="q8"><b>8.</b> I would rather you ______ me the truth yesterday.<br>You picked: <span id="q8_s"></span>.<br> Meanwhile, Would rather + subject + past perfect expresses regret about the past → <b>had told</b>.</p>
+            <p id="q9"><b>9.</b> Not only ______ late, but he also forgot his documents.<br>You picked: <span id="q9_s"></span>.<br> Meanwhile, After Not only, we use inversion. Auxiliary verb comes before the subject → <b>was he</b>.</p>
+            <p id="q10"><b>10.</b> The teacher, as well as the students, ______ excited about the trip.<br>You picked: <span id="q10_s"></span>.<br> Meanwhile, The subject is teacher (singular). “as well as…” does not change the number → <b>is</b>.</p>
+            <p id="q11"><b>11.</b> Had I known the truth, I ______ differently.<br>You picked: <span id="q11_s"></span>.<br> Meanwhile, Inverted third conditional. Had I known = If I had known → result is <b>would have acted</b>.</p>
+            <p id="q12"><b>12.</b> She has been working here ______ five years.<br>You picked: <span id="q12_s"></span>.<br> Meanwhile, For is used with a duration (five years), while since is for a starting point → <b>for</b>.</p>
+            <p id="q13"><b>13.</b> The committee ______ divided in their opinions.<br>You picked: <span id="q13_s"></span>.<br> Meanwhile, Committee can be treated as plural when members act individually → <b>are</b>.</p>
+            <p id="q14"><b>14.</b> He behaves as though he ______ everything.<br>You picked: <span id="q14_s"></span>.<br> Meanwhile, After as though, we use past tense for unreal situations → <b>knew.</b></p>
+            <p id="q15"><b>15.</b> By the time we arrived, they ______ dinner.<br>You picked: <span id="q15_s"></span>.<br> Meanwhile, Past perfect shows an action completed before another past action → <b>had finished</b>.</p>
+            <p id="q16"><b>16.</b> I wish I ______ taller.<br>You picked: <span id="q16_s"></span>.<br> Meanwhile, In wishes about unreal present situations, we use the subjunctive “were” for all subjects → <b>were</b>.</p>
+            <p id="q17"><b>17.</b> Scarcely ______ the announcement made when the crowd reacted.<br>You picked: <span id="q17_s"></span>.<br> Meanwhile, Correct inversion: Scarcely had…when → requires past perfect <b>(had been)</b>.</p>
+            <p id="q18"><b>18.</b> There ______ a number of issues to consider.<br>You picked: <span id="q18_s"></span>.<br> Meanwhile, A number of = plural → takes a plural verb <b>(are)</b>.</p>
+            <p id="q19"><b>19.</b> He is one of the students who ______ always punctual.<br>You picked: <span id="q19_s"></span>.<br> Meanwhile, Who refers to students (plural), so the verb must be <b>are</b>.</p>
+            <p id="q20"><b>20.</b> The more you practice, ______ you become.<br>You picked: <span id="q20_s"></span>.<br> Meanwhile, This is a comparative correlative structure: The more…, <b>the better…</p>
+          </div>
+        </div>
+        <script>
+          const correctAnswers1 = JSON.parse(localStorage.getItem('correctAnswers1'));
+          const correctAnswers2 = JSON.parse(localStorage.getItem('correctAnswers2'));
+          const correctAnswers3 = JSON.parse(localStorage.getItem('correctAnswers3'));
+          const correctAnswers4 = JSON.parse(localStorage.getItem('correctAnswers4'));
+          const selectedAnswers1 = JSON.parse(localStorage.getItem('selectedAnswers1'));
+          const selectedAnswers2 = JSON.parse(localStorage.getItem('selectedAnswers2'));
+          const selectedAnswers3 = JSON.parse(localStorage.getItem('selectedAnswers3'));
+          const selectedAnswers4 = JSON.parse(localStorage.getItem('selectedAnswers4'));
+          const correctSelects1to5 = JSON.parse(localStorage.getItem('correctSelects1to5'));
+          const correctSelects6to10 = JSON.parse(localStorage.getItem('correctSelects6to10'));
+          const correctSelects11to15 = JSON.parse(localStorage.getItem('correctSelects11to15'));
+          const correctSelects16to20 = JSON.parse(localStorage.getItem('correctSelects16to20'));
+          const allCorrectAnswers = [correctAnswers1, correctAnswers2, correctAnswers3, correctAnswers4].flat();
+          const allSelectedAnswers = [selectedAnswers1, selectedAnswers2, selectedAnswers3, selectedAnswers4].flat();
+          const allCorrectSelects = [correctSelects1to5, correctSelects6to10, correctSelects11to15, correctSelects16to20].flat();
+          document.getElementById('pre-s').innerHTML = (20 - allCorrectSelects.length) + ' ' + 'question(s) ';
+          const correctAnswers = {
+            q1: correctAnswers1[0], q2: correctAnswers1[1], q3: correctAnswers1[2], q4: correctAnswers1[3], q5: correctAnswers1[4],
+            q6: correctAnswers2[0], q7: correctAnswers2[1], q8: correctAnswers2[2], q9: correctAnswers2[3], q10: correctAnswers2[4],
+            q11: correctAnswers3[0], q12: correctAnswers3[1], q13: correctAnswers3[2], q14: correctAnswers3[3], q15: correctAnswers3[4],
+            q16: correctAnswers4[0], q17: correctAnswers4[1], q18: correctAnswers4[2], q19: correctAnswers4[3], q20: correctAnswers4[4],
+          }
+          const selectedAnswers = {
+            q1: selectedAnswers1[0], q2: selectedAnswers1[1], q3: selectedAnswers1[2], q4: selectedAnswers1[3], q5: selectedAnswers1[4],
+            q6: selectedAnswers2[0], q7: selectedAnswers2[1], q8: selectedAnswers2[2], q9: selectedAnswers2[3], q10: selectedAnswers2[4],
+            q11: selectedAnswers3[0], q12: selectedAnswers3[1], q13: selectedAnswers3[2], q14: selectedAnswers3[3], q15: selectedAnswers3[4],
+            q16: selectedAnswers4[0], q17: selectedAnswers4[1], q18: selectedAnswers4[2], q19: selectedAnswers4[3], q20: selectedAnswers4[4],
+          }
+            let q1Review = document.getElementById('q1'); let q6Review = document.getElementById('q6');
+            let q2Review = document.getElementById('q2'); let q7Review = document.getElementById('q7');
+            let q3Review = document.getElementById('q3'); let q8Review = document.getElementById('q8');
+            let q4Review = document.getElementById('q4'); let q9Review = document.getElementById('q9');
+            let q5Review = document.getElementById('q5'); let q10Review = document.getElementById('q10');
+            let q11Review = document.getElementById('q11'); let q16Review = document.getElementById('q16');
+            let q12Review = document.getElementById('q12'); let q17Review = document.getElementById('q17');
+            let q13Review = document.getElementById('q13'); let q18Review = document.getElementById('q18');
+            let q14Review = document.getElementById('q14'); let q19Review = document.getElementById('q19');
+            let q15Review = document.getElementById('q15'); let q20Review = document.getElementById('q20');
+          if (correctAnswers['q1'] && selectedAnswers['q1'] && correctAnswers['q1'] == selectedAnswers['q1']) {
+            q1Review.style.display = 'none';
+          } else {
+            q1Review.style.display = 'block';
+            document.getElementById('q1_s').innerHTML = '<b>' + selectedAnswers['q1'] + '</b>';
+          }
+          if (correctAnswers['q2'] && selectedAnswers['q2'] && correctAnswers['q2'] == selectedAnswers['q2']) {
+            q2Review.style.display = 'none';
+          } else {
+            q2Review.style.display = 'block';
+            document.getElementById('q2_s').innerHTML = '<b>' + selectedAnswers['q2'] + '</b>';
+          }
+          if (correctAnswers['q3'] && selectedAnswers['q3'] && correctAnswers['q3'] == selectedAnswers['q3']) {
+            q3Review.style.display = 'none';
+          } else {
+            q3Review.style.display = 'block';
+            document.getElementById('q3_s').innerHTML = '<b>' + selectedAnswers['q3'] + '</b>';
+          }
+          if (correctAnswers['q4'] && selectedAnswers['q4'] && correctAnswers['q4'] == selectedAnswers['q4']) {
+            q4Review.style.display = 'none';
+          } else {
+            q4Review.style.display = 'block';
+            document.getElementById('q4_s').innerHTML = '<b>' + selectedAnswers['q4'] + '</b>';
+          }
+          if (correctAnswers['q5'] && selectedAnswers['q5'] && correctAnswers['q5'] == selectedAnswers['q5']) {
+            q5Review.style.display = 'none';
+          } else {
+            q5Review.style.display = 'block';
+            document.getElementById('q5_s').innerHTML = '<b>' + selectedAnswers['q5'] + '</b>';
+          }
+          if (correctAnswers['q6'] && selectedAnswers['q6'] && correctAnswers['q6'] == selectedAnswers['q6']) {
+            q6Review.style.display = 'none';
+          } else {
+            q6Review.style.display = 'block';
+            document.getElementById('q6_s').innerHTML = '<b>' + selectedAnswers['q6'] + '</b>';
+          }
+          if (correctAnswers['q7'] && selectedAnswers['q7'] && correctAnswers['q7'] == selectedAnswers['q7']) {
+            q7Review.style.display = 'none';
+          } else {
+            q7Review.style.display = 'block';
+            document.getElementById('q7_s').innerHTML = '<b>' + selectedAnswers['q7'] + '</b>';
+          }
+          if (correctAnswers['q8'] && selectedAnswers['q8'] && correctAnswers['q8'] == selectedAnswers['q8']) {
+            q8Review.style.display = 'none';
+          } else {
+            q8Review.style.display = 'block';
+            document.getElementById('q8_s').innerHTML = '<b>' + selectedAnswers['q8'] + '</b>';
+          }
+          if (correctAnswers['q9'] && selectedAnswers['q9'] && correctAnswers['q9'] == selectedAnswers['q9']) {
+            q9Review.style.display = 'none';
+          } else {
+            q9Review.style.display = 'block';
+            document.getElementById('q9_s').innerHTML = '<b>' + selectedAnswers['q9'] + '</b>';
+          }
+          if (correctAnswers['q10'] && selectedAnswers['q10'] && correctAnswers['q10'] == selectedAnswers['q10']) {
+            q10Review.style.display = 'none';
+          } else {
+            q10Review.style.display = 'block';
+            document.getElementById('q10_s').innerHTML = '<b>' + selectedAnswers['q10'] + '</b>';
+          }
+          if (correctAnswers['q11'] && selectedAnswers['q11'] && correctAnswers['q11'] == selectedAnswers['q11']) {
+            q11Review.style.display = 'none';
+          } else {
+            q11Review.style.display = 'block';
+            document.getElementById('q11_s').innerHTML = '<b>' + selectedAnswers['q11'] + '</b>';
+          }
+          if (correctAnswers['q12'] && selectedAnswers['q12'] && correctAnswers['q12'] == selectedAnswers['q12']) {
+            q12Review.style.display = 'none';
+          } else {
+            q12Review.style.display = 'block';
+            document.getElementById('q12_s').innerHTML = '<b>' + selectedAnswers['q12'] + '</b>';
+          }
+          if (correctAnswers['q13'] && selectedAnswers['q13'] && correctAnswers['q13'] == selectedAnswers['q13']) {
+            q13Review.style.display = 'none';
+          } else {
+            q13Review.style.display = 'block';
+            document.getElementById('q13_s').innerHTML = '<b>' + selectedAnswers['q13'] + '</b>';
+          }
+          if (correctAnswers['q14'] && selectedAnswers['q14'] && correctAnswers['q14'] == selectedAnswers['q14']) {
+            q14Review.style.display = 'none';
+          } else {
+            q14Review.style.display = 'block';
+            document.getElementById('q14_s').innerHTML = '<b>' + selectedAnswers['q14'] + '</b>';
+          }
+          if (correctAnswers['q15'] && selectedAnswers['q15'] && correctAnswers['q15'] == selectedAnswers['q15']) {
+            q15Review.style.display = 'none';
+          } else {
+            q15Review.style.display = 'block';
+            document.getElementById('q15_s').innerHTML = '<b>' + selectedAnswers['q15'] + '</b>';
+          }
+          if (correctAnswers['q16'] && selectedAnswers['q16'] && correctAnswers['q16'] == selectedAnswers['q16']) {
+            q16Review.style.display = 'none';
+          } else {
+            q16Review.style.display = 'block';
+            document.getElementById('q16_s').innerHTML = '<b>' + selectedAnswers['q16'] + '</b>';
+          }
+          if (correctAnswers['q17'] && selectedAnswers['q17'] && correctAnswers['q17'] == selectedAnswers['q17']) {
+            q17Review.style.display = 'none';
+          } else {
+            q17Review.style.display = 'block';
+            document.getElementById('q17_s').innerHTML = '<b>' + selectedAnswers['q17'] + '</b>';
+          }
+          if (correctAnswers['q18'] && selectedAnswers['q18'] && correctAnswers['q18'] == selectedAnswers['q18']) {
+            q18Review.style.display = 'none';
+          } else {
+            q18Review.style.display = 'block';
+            document.getElementById('q18_s').innerHTML = '<b>' + selectedAnswers['q18'] + '</b>';
+          }
+          if (correctAnswers['q19'] && selectedAnswers['q19'] && correctAnswers['q19'] == selectedAnswers['q19']) {
+            q19Review.style.display = 'none';
+          } else {
+            q19Review.style.display = 'block';
+            document.getElementById('q19_s').innerHTML = '<b>' + selectedAnswers['q19'] + '</b>';
+          }
+          if (correctAnswers['q20'] && selectedAnswers['q20'] && correctAnswers['q20'] == selectedAnswers['q20']) {
+            q20Review.style.display = 'none';
+          } else {
+            q20Review.style.display = 'block';
+            document.getElementById('q20_s').innerHTML = '<b>' + selectedAnswers['q20'] + '</b>';
+          }
+          /*document.getElementById('test-reveal1').innerHTML = correctAnswers['q19'];
+          document.getElementById('test-reveal2').innerHTML = selectedAnswers['q19'];*/
+        </script>
+      </div>
+      <div id="extra"></div>
+      <div id="footer">
+        <p>&copy;Laully</p>
+      </div>
+    </body>
+  </html>

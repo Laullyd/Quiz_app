@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Grammar Quiz</title>
+      <link rel="stylesheet" type="text/css"  href="grammar_quiz2.css"/>
+      <link rel="" href=""/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+    </head>
+    <body>
+      <div id="header">
+        <h1>Hey <span id="firstname"></span>! &#128075;</h1>
+        <h2>You're doing well. Keep going!</h2>
+      </div>
+      <script>
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        document.getElementById('firstname').innerText = userData.firstName;
+      </script><hr>
+      <div id="content-container">
+        <div id="mother">
+          <div id="quiz-content">
+            <h2>English Grammar Apptitude Test (Cont'd)</h2><br>
+            <form action="">
+              <ol type="1" start="6">
+                <li id="q6">
+                  <p>Each of the players ______ responsible for their own equipment.</p>
+                  <input type="radio" id="q6-a" name="q6" value="are">
+                  <label for="q6-a">are</label><br>
+                  <input type="radio" id="q6-b" name="q6" value="were">
+                  <label for="q6-b">were</label><br>
+                  <input type="radio" id="q6-c" name="q6" value="have been">
+                  <label for="q6-c">have been</label><br>
+                  <input type="radio" id="q6-d" name="q6" value="is"  class="correct">
+                  <label for="q6-d">is</label>
+                </li>
+                <li id="q7">
+                  <p>She insisted that he ______ immediately.</p>
+                  <input type="radio" id="q7-a" name="q7" value="leave" class="correct">
+                  <label for="q7-a">leave</label><br>
+                  <input type="radio" id="q7-b" name="q7" value="left">
+                  <label for="q7-b">left</label><br>
+                  <input type="radio" id="q7-c" name="q7" value="leaves">
+                  <label for="q7-c">leaves</label><br>
+                  <input type="radio" id="q7-d" name="q7" value="leaving">
+                  <label for="q7-d">leaving</label>
+                </li>
+                <li id="q8">
+                  <p>I would rather you ______ me the truth yesterday.</p>
+                  <input type="radio" id="q8-a" name="q8" value="told">
+                  <label for="q8-a">told</label><br>
+                  <input type="radio" id="q8-b" name="q8" value="tell">
+                  <label for="q8-b">tell</label><br>
+                  <input type="radio" id="q8-c" name="q8" value="have told">
+                  <label for="q8-c">have told</label><br>
+                  <input type="radio" id="q8-d" name="q8" value="had told" class="correct">
+                  <label for="q8-d">had told</label>
+                </li>
+                <li id="q9">
+                  <p>Not only ______ late, but he also forgot his documents.</p>
+                  <input type="radio" id="q9-a" name="q9" value="he was">
+                  <label for="q9-a">he was</label><br>
+                  <input type="radio" id="q9-b" name="q9" value="was he" class="correct">
+                  <label for="q9-b">was he</label><br>
+                  <input type="radio" id="q9-c" name="q9" value="did he">
+                  <label for="q9-c">did he</label><br>
+                  <input type="radio" id="q9-d" name="q9" value="he did">
+                  <label for="q9-d">he did</label>
+                </li>
+                <li id="q10">
+                  <p>The teacher, as well as the students, ______ excited about the trip.</p>
+                  <input type="radio" id="q10-a" name="q10" value="are">
+                  <label for="q10-a">are</label><br>
+                  <input type="radio" id="q10-b" name="q10" value="were">
+                  <label for="q10-b">were</label><br>
+                  <input type="radio" id="q10-c" name="q10" value="is" class="correct">
+                  <label for="q10-c">is</label><br>
+                  <input type="radio" id="q10-d" name="q10" value="have been">
+                  <label for="q10-d">have been</label>
+                </li>
+              </ol>
+            </form>
+            <button type="button" onclick="storeAnswers()">Next ></button>
+            <script>
+              function storeAnswers() {
+                const correctAnswers2 = ['is', 'leave', 'had told', 'was he', 'is'];
+                const selectedAnswers2 = [];
+                const correctSelects6to10 = [];
+                const allQuestions = document.getElementsByTagName('li');
+                for (var i = 0; i < allQuestions.length; i++) {
+                  let eachQuestion = allQuestions[i];
+                  let selectedOption = eachQuestion.querySelector('input:checked')
+                  let correctOption = eachQuestion.querySelector('input.correct')
+                  if (selectedOption) {
+                    selectedAnswers2.push(selectedOption.value)
+                  } else {
+                    selectedAnswers2.push(null)
+                  }
+                  if (selectedOption && correctOption && selectedOption.value == correctOption.value) {
+                    correctSelects6to10.push(selectedOption.value)
+                    localStorage.setItem('correctSelects6to10', JSON.stringify(correctSelects6to10))
+                  }
+                }
+                if (selectedAnswers2[0] == null || selectedAnswers2[1] == null || selectedAnswers2[2] == null || selectedAnswers2[3] == null || selectedAnswers2[4] == null) {
+                  alert('Please answer all questions in this set!')
+                } else {
+                localStorage.setItem('selectedAnswers2', JSON.stringify(selectedAnswers2))
+                localStorage.setItem('correctAnswers2', JSON.stringify(correctAnswers2))
+                window.location.href = '../Quiz_app_grammar3/grammar_quiz3.html';
+                }
+              }
+              window.history.pushState(null, '', '');
+              window.history.pushState(null, '', '');
+              window.history.pushState(null, '', '');
+              window.history.pushState(null, '', '');
+              window.history.pushState(null, '', '');
+              window.addEventListener('popstate', function () {
+                alert('You are not allowed to go back during the quiz!');
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <div id="extra"></div><hr>
+      <div id="footer">
+        <p>&copy;Laully</p>
+      </div>
+    </body>
+  </html>

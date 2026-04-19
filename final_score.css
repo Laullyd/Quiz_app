@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+#header {
+  padding: 15px;
+  background-color: rgb(35, 146, 35);
+}
+#header h1 {
+  margin-left: 2%;
+  font-size: 250%;
+  font-family: cursive;
+  font-weight: bold;
+  color: white;
+}
+#header h2 {
+  margin-left: 2%;
+  color: black;
+}
+#content {
+  width: 70%;
+  margin: auto;
+}
+#score-cont, #animate-cont {
+  background-color: lightgray;
+  border: 1px solid transparent;
+}
+#content h2 {
+  text-align: center;
+  vertical-align: middle;
+}
+#score {
+  font-size: 130%;
+}
+#animate {
+  width: 70%;
+  margin: auto;
+  animation: show-percentage-score 2s ease-in-out 1;
+}
+#animate p {
+  width: 60%;
+  margin: 20px auto;
+  font-size: 18vw;
+  font-weight: bold;
+}
+#remark-cont {
+  width: 80%;
+  margin: auto;
+}
+#remark-cont p {
+  font-size: 110%;
+}
+#remark span {
+  font-size: 120%;
+  font-weight: bold;
+}
+#review {
+  border: none;
+  border-radius: 2px;
+  background-color: rgb(35, 146, 35);
+  height: 50px;
+  width: 100%;
+  font-size: 110%;
+}
+#review a {
+  color: black;
+  text-decoration: none;
+}
+#review:hover {
+  background-color: rgb(13, 80, 13);
+}
+#review:hover a {
+  color: white;
+  text-decoration: none;
+}
+#extra {
+  height: 10px;
+}
+#footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  height: 500px;
+  line-height: 130px;
+}
+#footer p {
+  color: white;
+  background-color: black;
+}
+@keyframes show-percentage-score {
+  from {transform: scaleX(0) scaleY(0);}
+  to {transform: scaleX(1) scaleY(1);}
+}
