@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Quiz App</title>
+      <link rel="stylesheet" type="text/css"  href="quiz_app_home.css"/>
+      <link rel="" href=""/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+    </head>
+    <body>
+      <div id="header">
+        <h1>Hello there! <span>&#128075;</span></h1>
+        <h2>Exited to see how grounded you are in English grammar? Me too! <span>&#128515;</span></h2>
+      </div>
+      <div id="content">
+        <p><span>But first...</span>We want to know you, if that's okay.</p>
+        <p>Fill the form below, then click "Let's begin" to start the journey.</p><hr>
+        <form id="user-form" action="../Quiz_app_grammar1/grammar_quiz1.html" target="_self" autocomplete>
+          <div class="wrap">
+            <label for="fname">Firstname: </label>
+            <input type="text" id="fname" name="fname" required>
+          </div>
+          <div class="wrap">
+            <label for="lname">Lastname: </label>
+            <input type="text" id="lname" name="lname" required>
+          </div>
+          <div class="wrap">
+            <label for="mname">Middlename(s): </label>
+            <input type="text" id="mname" name="mname" required>
+          </div>
+          <div class="wrap">
+            <label for="mail">Email: </label>
+            <input type="email" id="mail" name="mail"required>
+          </div>
+          <div class="wrap">
+            <label for="phone">Phone No: </label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="wrap">
+            <label for="level" id="not-edit">How much grammar do you know? What's your level?</label>
+            <select id="level" name="level">
+              <option value="Novice">Novice</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Amateur">Amateur</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+              <option value="Prefessional">Prefessional</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div><br>
+          <input type="submit" value="Let's begin!">
+        </form>
+      </div>
+      <script>
+        const form = document.getElementById('user-form');
+        form.addEventListener('submit', () => {
+          const userData = {
+            firstName: document.getElementById('fname').value,
+            lastName: document.getElementById('lname').value,
+            email: document.getElementById('mail').value,
+            phone: document.getElementById('phone').value,
+            level: document.getElementById('level').value
+          };
+          localStorage.setItem('userData', JSON.stringify(userData));
+        });
+      </script>
+      <div id="footer">
+        <p>&copy;Laully</p>
+      </div>
+    </body>
+  </html>

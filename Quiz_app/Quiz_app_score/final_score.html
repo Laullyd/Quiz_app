@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Grammar Quiz Results</title>
+      <link rel="stylesheet" type="text/css"  href="final_score.css"/>
+      <link rel="" href=""/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+    </head>
+    <body>
+      <div id="header">
+        <h1>Well done <span id="firstname"></span>! &#128079;</h1>
+        <h2>You've finished the quiz!</h2>
+      </div>
+      <script>
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        document.getElementById('firstname').innerText = userData.firstName;
+      </script><hr>
+      <div id="content">
+        <div id="score-cont">
+          <h2>You scored <span id="score"></span></h2>
+        </div><hr>
+        <div id="animate-cont">
+          <div id="animate">
+            <p><span id="percentage-score"></span></p>
+          </div>
+        </div>
+      </div><hr>
+      <div id="remark-cont">
+        <p id="remark"></p>
+        <button type="button" id="review" onclick="disable()"><a href="../Quiz_app_review/review.html">Check Corrections</a></button>
+      </div>
+      <div id="extra"></div>
+      <div id="footer">
+        <p>&copy;Laully</p>
+      </div>
+      <script>
+        const correctAnswers1 = JSON.parse(localStorage.getItem('correctAnswers1'));
+        const correctAnswers2 = JSON.parse(localStorage.getItem('correctAnswers2'));
+        const correctAnswers3 = JSON.parse(localStorage.getItem('correctAnswers3'));
+        const correctAnswers4 = JSON.parse(localStorage.getItem('correctAnswers4'));
+        const selectedAnswers1 = JSON.parse(localStorage.getItem('selectedAnswers1'));
+        const selectedAnswers2 = JSON.parse(localStorage.getItem('selectedAnswers2'));
+        const selectedAnswers3 = JSON.parse(localStorage.getItem('selectedAnswers3'));
+        const selectedAnswers4 = JSON.parse(localStorage.getItem('selectedAnswers4'));
+        const correctSelects1to5 = JSON.parse(localStorage.getItem('correctSelects1to5'));
+        const correctSelects6to10 = JSON.parse(localStorage.getItem('correctSelects6to10'));
+        const correctSelects11to15 = JSON.parse(localStorage.getItem('correctSelects11to15'));
+        const correctSelects16to20 = JSON.parse(localStorage.getItem('correctSelects16to20'));
+        const allCorrectAnswers = [correctAnswers1, correctAnswers2, correctAnswers3, correctAnswers4].flat();
+        const allSelectedAnswers = [selectedAnswers1, selectedAnswers2, selectedAnswers3, selectedAnswers4].flat();
+        const allCorrectSelects = [correctSelects1to5, correctSelects6to10, correctSelects11to15, correctSelects16to20].flat();
+        let firstDiv = document.getElementsByTagName('div')[0].id;
+        document.getElementById('score').innerHTML = allCorrectSelects.length + '/20';
+        let percentageScore = ((allCorrectSelects.length / 20) * 100).toFixed();
+        document.getElementById('percentage-score').innerHTML = percentageScore + '%';
+        const remark = document.getElementById('remark');
+        let review = document.getElementById('review');
+        if (percentageScore < 40) {
+          remark.innerHTML = '<span>Awww!</span> You tried but this is somewhat a poor performance. You really really need to go brush up.';
+        } else if (percentageScore >= 40 && percentageScore < 50) {
+          remark.innerHTML = "<span>Ehhh...</span>, you didn't fail, but this is more like just a pass mark. Buckle up mate.";
+        } else if (percentageScore >= 50 && percentageScore < 60) {
+          remark.innerHTML = '<span>Not bad mate!</span> This is an average performance. Shows you still have work to do.';
+        } else if (percentageScore >= 60 && percentageScore < 70) {
+          remark.innerHTML = "<span>This is good!</span> You're on the way, but not there just yet.";
+        } else if (percentageScore >= 70 && percentageScore < 90) {
+          remark.innerHTML = "<span>Awesome!</span> A dictinction places you among the professionals. Well done mate!";
+        } else if (percentageScore >= 90) {
+          remark.innerHTML = "<span>Fantastic!</span> You're surely an authority in English grammar. Nothing short of excellence!";
+        }
+        function disable() {
+          if (percentageScore == 100) {
+          review.getElementsByTagName('a')[0].href = 'javaScript:void(0)';
+          alert('You scored 100%. Nothing to correct');
+          }
+        }
+      </script>
+    </body>
+  </html>
